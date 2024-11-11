@@ -24,28 +24,14 @@ username_file_path = "username.txt"
 usernames = read_usernames_from_file(username_file_path)
 output_folder = "C:/data_linkvideo"  # Thư mục lưu trữ các liên kết video
 
-# # Hàm cuộn trang để tải thêm video
-# def scroll_to_load_more_videos(driver, scroll_pause_time=2, max_scrolls=3):
-#     """
-#     Cuộn trang để tải thêm video (scroll xuống cuối trang).
-#     """
-#     last_height = driver.execute_script("return document.body.scrollHeight")
-#     for _ in range(max_scrolls):
-#         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-#         time.sleep(scroll_pause_time)
-#         new_height = driver.execute_script("return document.body.scrollHeight")
-#         if new_height == last_height:
-#             break
-#         last_height = new_height
 
 # Hàm lấy liên kết video từ một tài khoản TikTok
 def get_latest_tiktok_links(username, num_videos=10): 
     # Khởi tạo Chrome driver với hồ sơ người dùng mặc định
     options = webdriver.ChromeOptions()
-    options.add_argument("user-data-dir=C:/Users/Admin/AppData/Local/Google/Chrome/User Data/Profile 5")  # Thay [Your Username] bằng tên tài khoản của bạn
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     options.add_experimental_option("useAutomationExtension", False)
-    options.add_argument("--headless")  # Chạy trình duyệt ở chế độ nền
+    # options.add_argument("--headless")  # Chạy trình duyệt ở chế độ nền
     options.add_argument("--disable-blink-features=AutomationControlled")
 
     driver = webdriver.Chrome(options=options)
